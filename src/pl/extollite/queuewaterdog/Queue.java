@@ -2,6 +2,8 @@ package pl.extollite.queuewaterdog;
 
 import cn.nukkit.Server;
 import cn.nukkit.event.Listener;
+import cn.nukkit.level.Level;
+import cn.nukkit.level.Position;
 import cn.nukkit.level.biome.EnumBiome;
 import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.plugin.PluginBase;
@@ -27,12 +29,14 @@ public class Queue extends PluginBase implements Listener {
         this.getLogger().info(TextFormat.DARK_GREEN + "Plugin by " + authors.get(0));
 
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
-        for(int x = -3; x <= 3; x++){
-            for(int z = -3; z <= 3; z++){
+        Position spawnLocation = Server.getInstance().getDefaultLevel().getSpawnLocation();
+        for(int x = spawnLocation.getChunkX() - 1; x <= spawnLocation.getChunkX() + 1; x++){
+            for(int z = spawnLocation.getChunkZ() -1; z <= spawnLocation.getChunkZ(); z++){
                 BaseFullChunk chunk = Server.getInstance().getDefaultLevel().getChunk(x, z);
                 for(int coordX = 0; coordX < 16; coordX++){
                     for(int coordZ = 0; coordZ < 16; coordZ++){
-                        chunk.setBiomeId(coordX, coordZ, 9);
+                        if(chunk != null)
+                            chunk.setBiomeId(coordX, coordZ, 9);
                     }
                 }
             }
