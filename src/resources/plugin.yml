@@ -1,0 +1,9 @@
+name: QueueWaterdog
+main: pl.extollite.queuewaterdog.Queue
+version: "${pom.version}"
+api: ["1.0.9"]
+load: POSTWORLD
+authors: ["Extollite"]
+description: Nukkit queue plugin
+prefix: "Queue"
+
