@@ -5,10 +5,7 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.inventory.InventoryOpenEvent;
-import cn.nukkit.event.player.PlayerChatEvent;
-import cn.nukkit.event.player.PlayerCommandPreprocessEvent;
-import cn.nukkit.event.player.PlayerJoinEvent;
-import cn.nukkit.event.player.PlayerMoveEvent;
+import cn.nukkit.event.player.*;
 import cn.nukkit.event.server.DataPacketSendEvent;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.Vector3;
@@ -61,5 +58,11 @@ public class EventListener implements Listener {
         if(event.getPlayer().isOp() || event.getPlayer().hasPermission("queue.admin"))
             return;
         event.setCancelled();
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event){
+        event.setQuitMessage("");
+        event.setAutoSave(false);
     }
 }
