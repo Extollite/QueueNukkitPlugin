@@ -29,9 +29,8 @@ public class Queue extends PluginBase implements Listener {
         this.getLogger().info(TextFormat.DARK_GREEN + "Plugin by " + authors.get(0));
 
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
-        Position spawnLocation = Server.getInstance().getDefaultLevel().getSpawnLocation();
-        for(int x = spawnLocation.getChunkX() - 1; x <= spawnLocation.getChunkX() + 1; x++){
-            for(int z = spawnLocation.getChunkZ() -1; z <= spawnLocation.getChunkZ(); z++){
+        for(int x = -3; x <= 3; x++){
+            for(int z = -3; z <= 3; z++){
                 BaseFullChunk chunk = Server.getInstance().getDefaultLevel().getChunk(x, z);
                 for(int coordX = 0; coordX < 16; coordX++){
                     for(int coordZ = 0; coordZ < 16; coordZ++){
