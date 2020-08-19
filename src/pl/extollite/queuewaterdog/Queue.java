@@ -26,7 +26,6 @@ public class Queue extends PluginBase implements Listener {
         this.saveDefaultConfig();
         instance = this;
         List<String> authors = this.getDescription().getAuthors();
-        this.getLogger().info(TextFormat.DARK_GREEN + "Plugin by " + authors.get(0));
 
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         for(int x = -3; x <= 3; x++){
